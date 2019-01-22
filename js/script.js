@@ -16,29 +16,16 @@ var links = ["https://www.youtube.com/watch?v=qV04HIhTEuw", "https://www.youtube
 
 
     // BELOW Use forEach Loop to display the data from each of your array's in the correct div
-songs.forEach(function(song){
-        $("#songs").append("<p>" + song + "</p>");
-});
 
-images_links.forEach(function(imageslink){
-        $("#images").append("<img src=" + imageslink + ">");
-});
-
-artists.forEach(function(artist){
-        $("#artists").append("<p>" + artist + "</p>");
-});
-
-song_lengths.forEach(function(songlength){
-        $("#lengths").append("<p>" + songlength + "</p>");
-});
-
-links.forEach(function(link){
-        $("#links").append("<a href=" + link + "target='_blank'" + ">" + "Listen" + "</a>");
-});
 
 
 function emptySongInfo(){
     $("#songs").empty();
+    $("#images").empty();
+    $("#artists").empty();
+    $("#lengths").empty();
+    $("#links").empty();
+    
     // Use jQuery to empty all of the remaining divs
 
 }
@@ -46,11 +33,41 @@ function emptySongInfo(){
 
 function addSongInfo(){
     // BELOW write the code to add new items to each of the arrays.
+    var songName = $('#song').val();
+    var artistName = $('#artist').val();
+    var lengthOfSong = $('#length').val();
+    var imageURL = $('#image').val();
+    var linkURL = $('#link').val();
 
+    songs.push(songName);
+    images_links.push(imageURL);
+    artists.push(artistName);
+    song_lengths.push(lengthOfSong);
+    links.push(linkURL);
+    
 }
 
 function displaySongInfo(){
+    songs.forEach(function(song){
+        $("#songs").append("<p>" + song + "</p>");
+});
     
+    images_links.forEach(function(imageslink){
+        $("#images").append("<img src=" + imageslink + ">");
+});
+    
+    artists.forEach(function(artist){
+        $("#artists").append("<p>" + artist + "</p>");
+});
+    
+    song_lengths.forEach(function(songlength){
+        $("#lengths").append("<p>" + songlength + "</p>");
+});
+    
+    links.forEach(function(link){
+        $("#links").append("<a href=" + '"' + link + '"' + "target=_blank" + ">" + "Listen" + "</a>");
+});
+
 }
 
 $("#add").click(function() {
